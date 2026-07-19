@@ -12,7 +12,7 @@
 .scoreboard{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto;gap:14px;padding:max(14px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(14px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left))}.topbar{min-height:74px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:12px 18px}.top-left,.top-right{display:flex;gap:22px;align-items:center}.top-right{justify-content:flex-end}.top-stat{text-align:center}.top-label{font-size:.78rem;color:var(--muted);font-weight:800}.top-value{font-size:1.3rem;font-weight:900;margin-top:2px}.title{text-align:center;font-size:1.1rem;font-weight:900;letter-spacing:.08em}
 .players{min-height:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}.player{position:relative;min-width:0;border-radius:28px;padding:18px;display:grid;grid-template-rows:auto 1fr auto;overflow:hidden;border:5px solid transparent;transition:.18s}.player.white{background:#f8fafc;color:#0f172a}.player.yellow{background:#facc15;color:#111827}.player.active{border-color:#2dd4bf;box-shadow:0 0 0 4px rgba(45,212,191,.16),0 18px 50px rgba(0,0,0,.22)}.player-badge{position:absolute;top:14px;right:14px;padding:7px 12px;border-radius:999px;background:#0f766e;color:white;font-size:.82rem;font-weight:900}.player-header{display:flex;align-items:center;gap:14px}.ball{width:48px;height:48px;border-radius:50%;border:3px solid rgba(15,23,42,.22);box-shadow:inset -7px -8px 14px rgba(0,0,0,.12)}.ball.white-ball{background:white}.ball.yellow-ball{background:#fde047}.player-name{font-size:1.55rem;font-weight:900}.player-target{font-size:.9rem;opacity:.68;margin-top:2px}.score-area{display:flex;align-items:center;justify-content:center;flex-direction:column}.score{font-size:clamp(7rem,19vh,13rem);font-weight:950;line-height:.9;letter-spacing:-.06em}.run-line{margin-top:12px;font-size:1.05rem;font-weight:800;opacity:.74}.player-controls{display:grid;grid-template-columns:1fr 1fr;gap:12px}.score-btn{min-height:82px;border:0;border-radius:20px;font-size:2rem;font-weight:950}.plus{background:#0f766e;color:white}.minus{background:#cbd5e1;color:#0f172a}.yellow .minus{background:#111827;color:white}
 .bottom{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:12px}.control{min-height:68px;border:0;border-radius:18px;color:white;font-weight:900;font-size:1.05rem}.pause{background:#334155}.switch{background:linear-gradient(135deg,#f59e0b,#d97706);color:#111827;font-size:1.2rem}.finish{background:#b91c1c}
-.result-overlay{position:fixed;inset:0;z-index:50;background:rgba(2,6,23,.82);display:flex;align-items:center;justify-content:center;padding:24px}.result-card{width:min(900px,100%);max-height:92vh;overflow:auto;background:#fff;color:#0f172a;border-radius:28px;padding:26px}.result-title{text-align:center;font-size:2rem;font-weight:950}.result-score{text-align:center;font-size:3.8rem;font-weight:950;margin:10px 0 20px}.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.stat-panel{border:1px solid #dbe4ef;border-radius:20px;padding:18px;background:#f8fafc}.stat-panel.yellow-stat{background:#fef9c3}.stat-name{font-size:1.25rem;font-weight:900;margin-bottom:12px}.stat-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #dbe4ef}.stat-row:last-child{border-bottom:0}.result-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.result-actions button{height:60px;border:0;border-radius:16px;font-weight:900}.new-game{background:#0f766e;color:white}.close-result{background:#e2e8f0;color:#0f172a}
+.result-overlay{position:fixed;inset:0;z-index:50;background:rgba(2,6,23,.82);display:flex;align-items:center;justify-content:center;padding:24px}.result-card{width:min(900px,100%);max-height:92vh;overflow:auto;background:#fff;color:#0f172a;border-radius:28px;padding:26px}.result-title{text-align:center;font-size:2rem;font-weight:950}.result-score{text-align:center;font-size:3.8rem;font-weight:950;margin:10px 0 20px}.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.stat-panel{border:1px solid #dbe4ef;border-radius:20px;padding:18px;background:#f8fafc}.stat-panel.yellow-stat{background:#fef9c3}.stat-name{font-size:1.25rem;font-weight:900;margin-bottom:12px}.stat-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #dbe4ef}.stat-row:last-child{border-bottom:0}.result-actions{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:12px;margin-top:20px}.result-actions button{height:60px;border:0;border-radius:16px;font-weight:900}.sync-records{background:#2563eb;color:white}.new-game{background:#0f766e;color:white}.close-result{background:#e2e8f0;color:#0f172a}
 @media(max-width:820px) and (orientation:portrait){.scoreboard{grid-template-rows:auto auto auto}.players{grid-template-columns:1fr}.player{min-height:360px}.score{font-size:7rem}}@media(max-width:620px){.setup{padding:16px}.setup-card{padding:20px}.form-grid{grid-template-columns:1fr}.topbar{grid-template-columns:1fr 1fr}.title{display:none}.players{gap:8px}.player{padding:12px;border-radius:22px}.player-name{font-size:1.15rem}.ball{width:38px;height:38px}.score{font-size:6rem}.score-btn{min-height:68px}.bottom{grid-template-columns:1fr 1fr}.switch{grid-column:1/-1;grid-row:1}.stats-grid{grid-template-columns:1fr}}
 
 .remaining{margin-top:12px;display:inline-flex;align-items:center;justify-content:center;padding:9px 16px;border-radius:999px;font-size:1.08rem;font-weight:950;background:#f59e0b;color:#111827;box-shadow:0 0 0 4px rgba(245,158,11,.16);animation:endgamePulse 1.8s ease-in-out infinite}.high-run-line{margin-top:8px;font-size:.95rem;font-weight:850;opacity:.7}.player.endgame{box-shadow:0 0 0 5px rgba(245,158,11,.32),0 18px 50px rgba(0,0,0,.22)}@keyframes endgamePulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.035);opacity:.82}}.bottom{grid-template-columns:1fr 1.3fr 1fr 1fr}.undo{background:#475569}@media(max-width:620px){.bottom{grid-template-columns:1fr 1fr}.switch{grid-column:1/-1;grid-row:1}}
@@ -134,7 +134,7 @@
 </style>
 </head>
 <body>
-<section class="setup" id="setup"><div class="setup-card"><h1>3-Cushion iPad Scoreboard v1.4</h1><div class="sub">雙人比賽專用計分板，建議使用 iPad Mini 橫向操作。</div><div class="form-grid"><div><label>白球球員姓名</label><input id="whiteName" value="白球球員"></div><div><label>黃球球員姓名</label><input id="yellowName" value="黃球球員"></div><div><label>目標分數</label><input id="targetInput" type="number" min="1" value="30"></div><div><label>先攻球員</label><select id="starterInput"><option value="white">白球</option><option value="yellow">黃球</option></select></div><div><label>白球起始分數／讓分</label><input id="whiteStart" type="number" min="0" value="0"></div><div><label>黃球起始分數／讓分</label><input id="yellowStart" type="number" min="0" value="0"></div>
+<section class="setup" id="setup"><div class="setup-card"><h1>3-Cushion iPad Scoreboard v1.4.1</h1><div class="sub">雙人比賽專用計分板，建議使用 iPad Mini 橫向操作。</div><div class="form-grid"><div><label>白球球員姓名</label><input id="whiteName" value="白球球員"></div><div><label>黃球球員姓名</label><input id="yellowName" value="黃球球員"></div><div><label>目標分數</label><input id="targetInput" type="number" min="1" value="30"></div><div><label>先攻球員</label><select id="starterInput"><option value="white">白球</option><option value="yellow">黃球</option></select></div><div><label>白球起始分數／讓分</label><input id="whiteStart" type="number" min="0" value="0"></div><div><label>黃球起始分數／讓分</label><input id="yellowStart" type="number" min="0" value="0"></div>
       <div>
         <label>同步到 Records 時，我是哪一方？</label>
         <select id="selfSideInput">
@@ -212,10 +212,16 @@
     <button class="control finish" id="finishBtn" onclick="finishGame()">結束比賽</button>
   </div>
 </section>
-<section class="result-overlay hidden" id="resultOverlay"><div class="result-card"><div class="result-title">比賽結果</div><div class="result-score" id="resultScore"></div><div class="stats-grid" id="statsGrid"></div><div class="sync-status hidden" id="syncStatus"></div><div class="result-actions"><button class="new-game" onclick="newGame()">開始新比賽</button><button class="close-result" onclick="resultOverlay.classList.add('hidden')">返回計分板</button></div></div></section>
+<section class="result-overlay hidden" id="resultOverlay"><div class="result-card"><div class="result-title">比賽結果</div><div class="result-score" id="resultScore"></div><div class="stats-grid" id="statsGrid"></div><div class="sync-status hidden" id="syncStatus"></div><div class="result-actions">
+      <button class="sync-records" id="syncRecordsBtn" onclick="openRecordsAndImport()">同步並開啟 Records</button>
+      <button class="new-game" onclick="newGame()">開始新比賽</button>
+      <button class="close-result" onclick="resultOverlay.classList.add('hidden')">返回計分板</button>
+    </div></div></section>
 <script>
 const SCOREBOARD_KEY='threeCushionIPadScoreboardHistory_v1';
 const RECORDS_KEY='threeCushionTrainingLog_v1';
+const RECORDS_URL=new URL('/3C-records/',location.origin).href;
+let latestRecordsGame=null;
 
 let state=null;
 let timer=null;
@@ -486,6 +492,28 @@ function syncToRecords(record){
   return{synced:true,message:'已同步到 Training Records。'};
 }
 
+
+function encodeBridgePayload(value){
+  const bytes=new TextEncoder().encode(JSON.stringify(value));
+  let binary='';
+  bytes.forEach(byte=>binary+=String.fromCharCode(byte));
+  return btoa(binary).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+}
+
+function openRecordsAndImport(){
+  const game=latestRecordsGame||(state?buildRecordsGame(buildScoreboardRecord()):null);
+  if(!game){
+    alert('尚未指定哪位球員是我方，因此無法同步到個人 Records。');
+    return;
+  }
+  const payload=encodeBridgePayload({
+    version:'1',
+    source:'ipad-scoreboard',
+    game
+  });
+  window.location.href=RECORDS_URL+'#scoreboardImport='+payload;
+}
+
 function finishGame(auto=false){
   if(!state)return;
   if(!auto&&!confirm('確定要結束這場比賽嗎？'))return;
@@ -533,10 +561,11 @@ function finishGame(auto=false){
     localStorage.setItem(SCOREBOARD_KEY,JSON.stringify(saved));
   }
 
+  latestRecordsGame=buildRecordsGame(record);
   try{
     const result=syncToRecords(record);
     syncStatus.classList.remove('hidden','error');
-    syncStatus.innerHTML=`✓ 已保存 Scoreboard 紀錄<br>${result.synced?'✓':'•'} ${result.message}`;
+    syncStatus.innerHTML=`✓ 已保存 Scoreboard 紀錄<br>${result.synced?'✓':'•'} ${result.message}<br><small>若 Records 沒有出現，請按「同步並開啟 Records」。</small>`;
   }catch(error){
     syncStatus.classList.remove('hidden');
     syncStatus.classList.add('error');
