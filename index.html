@@ -16,10 +16,60 @@
 @media(max-width:820px) and (orientation:portrait){.scoreboard{grid-template-rows:auto auto auto}.players{grid-template-columns:1fr}.player{min-height:360px}.score{font-size:7rem}}@media(max-width:620px){.setup{padding:16px}.setup-card{padding:20px}.form-grid{grid-template-columns:1fr}.topbar{grid-template-columns:1fr 1fr}.title{display:none}.players{gap:8px}.player{padding:12px;border-radius:22px}.player-name{font-size:1.15rem}.ball{width:38px;height:38px}.score{font-size:6rem}.score-btn{min-height:68px}.bottom{grid-template-columns:1fr 1fr}.switch{grid-column:1/-1;grid-row:1}.stats-grid{grid-template-columns:1fr}}
 
 .remaining{margin-top:12px;display:inline-flex;align-items:center;justify-content:center;padding:9px 16px;border-radius:999px;font-size:1.08rem;font-weight:950;background:#f59e0b;color:#111827;box-shadow:0 0 0 4px rgba(245,158,11,.16);animation:endgamePulse 1.8s ease-in-out infinite}.high-run-line{margin-top:8px;font-size:.95rem;font-weight:850;opacity:.7}.player.endgame{box-shadow:0 0 0 5px rgba(245,158,11,.32),0 18px 50px rgba(0,0,0,.22)}@keyframes endgamePulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.035);opacity:.82}}.bottom{grid-template-columns:1fr 1.3fr 1fr 1fr}.undo{background:#475569}@media(max-width:620px){.bottom{grid-template-columns:1fr 1fr}.switch{grid-column:1/-1;grid-row:1}}
+
+.quick-score-row{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px;
+  margin-top:10px;
+}
+.quick-score-row button{
+  min-height:58px;
+  border:0;
+  border-radius:16px;
+  background:#e2e8f0;
+  color:#0f172a;
+  font-size:1.25rem;
+  font-weight:950;
+}
+.yellow .quick-score-row button{
+  background:rgba(255,255,255,.72);
+}
+.bottom{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+}
+.bottom .switch{
+  width:100%;
+  min-height:76px;
+  font-size:1.25rem;
+}
+.bottom-secondary{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:12px;
+}
+.bottom-secondary .control{
+  width:100%;
+}
+.finish{
+  background:#fff;
+  color:#b91c1c;
+  border:3px solid #b91c1c;
+}
+@media(max-width:820px) and (orientation:portrait){
+  .quick-score-row{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:620px){
+  .bottom-secondary{grid-template-columns:1fr 1fr}
+  .bottom-secondary .finish{grid-column:1/-1}
+}
+
 </style>
 </head>
 <body>
-<section class="setup" id="setup"><div class="setup-card"><h1>3-Cushion iPad Scoreboard v1.1</h1><div class="sub">雙人比賽專用計分板，建議使用 iPad Mini 橫向操作。</div><div class="form-grid"><div><label>白球球員姓名</label><input id="whiteName" value="白球球員"></div><div><label>黃球球員姓名</label><input id="yellowName" value="黃球球員"></div><div><label>目標分數</label><input id="targetInput" type="number" min="1" value="30"></div><div><label>先攻球員</label><select id="starterInput"><option value="white">白球</option><option value="yellow">黃球</option></select></div><div><label>白球起始分數／讓分</label><input id="whiteStart" type="number" min="0" value="0"></div><div><label>黃球起始分數／讓分</label><input id="yellowStart" type="number" min="0" value="0"></div>
+<section class="setup" id="setup"><div class="setup-card"><h1>3-Cushion iPad Scoreboard v1.2</h1><div class="sub">雙人比賽專用計分板，建議使用 iPad Mini 橫向操作。</div><div class="form-grid"><div><label>白球球員姓名</label><input id="whiteName" value="白球球員"></div><div><label>黃球球員姓名</label><input id="yellowName" value="黃球球員"></div><div><label>目標分數</label><input id="targetInput" type="number" min="1" value="30"></div><div><label>先攻球員</label><select id="starterInput"><option value="white">白球</option><option value="yellow">黃球</option></select></div><div><label>白球起始分數／讓分</label><input id="whiteStart" type="number" min="0" value="0"></div><div><label>黃球起始分數／讓分</label><input id="yellowStart" type="number" min="0" value="0"></div>
       <div><label>End Game 剩餘分數提醒</label><select id="endGameThreshold"><option value="0">不顯示</option><option value="3">剩 3 分開始</option><option value="5" selected>剩 5 分開始</option><option value="999">全程顯示</option></select></div></div><button class="start-btn" onclick="startGame()">開始比賽</button></div></section>
 <section class="scoreboard hidden" id="scoreboard"><div class="topbar"><div class="top-left"><div class="top-stat"><div class="top-label">經過時間</div><div class="top-value" id="elapsed">00:00</div></div><div class="top-stat"><div class="top-label">目前 INN</div><div class="top-value" id="inning">1</div></div></div><div class="title">3-CUSHION SCOREBOARD</div><div class="top-right"><div class="top-stat"><div class="top-label">目標分數</div><div class="top-value" id="targetDisplay">30</div></div><div class="top-stat"><div class="top-label">目前球員</div><div class="top-value" id="activeName">—</div></div></div></div>
 <div class="players"><article class="player white" id="whitePanel"><div class="player-badge hidden" id="whiteActive">目前出杆</div><div class="player-header"><div class="ball white-ball"></div><div><div class="player-name" id="whiteNameDisplay"></div><div class="player-target">白球 · 目標 <span id="whiteTarget"></span></div></div></div><div class="score-area"><div class="score" id="whiteScore">0</div><div class="run-line">本杆得分 <span id="whiteRun">0</span></div></div><div class="player-controls"><button class="score-btn plus" onclick="changeScore('white',1)">+1</button><button class="score-btn minus" onclick="changeScore('white',-1)">−1</button></div></article>
