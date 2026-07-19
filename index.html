@@ -17,64 +17,169 @@
 
 .remaining{margin-top:12px;display:inline-flex;align-items:center;justify-content:center;padding:9px 16px;border-radius:999px;font-size:1.08rem;font-weight:950;background:#f59e0b;color:#111827;box-shadow:0 0 0 4px rgba(245,158,11,.16);animation:endgamePulse 1.8s ease-in-out infinite}.high-run-line{margin-top:8px;font-size:.95rem;font-weight:850;opacity:.7}.player.endgame{box-shadow:0 0 0 5px rgba(245,158,11,.32),0 18px 50px rgba(0,0,0,.22)}@keyframes endgamePulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.035);opacity:.82}}.bottom{grid-template-columns:1fr 1.3fr 1fr 1fr}.undo{background:#475569}@media(max-width:620px){.bottom{grid-template-columns:1fr 1fr}.switch{grid-column:1/-1;grid-row:1}}
 
+.bottom-secondary .finish{grid-column:1/-1}
+}
+
+
+/* ===== v1.3 Layout Refinement ===== */
+.player{
+  grid-template-rows:auto 1fr auto;
+}
+.score-controls-wrap{
+  display:grid;
+  gap:10px;
+}
+.player-controls{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.player-controls .score-btn{
+  width:100%;
+  min-width:0;
+  min-height:76px;
+}
 .quick-score-row{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
   gap:10px;
-  margin-top:10px;
 }
 .quick-score-row button{
-  min-height:58px;
+  width:100%;
+  min-width:0;
+  min-height:52px;
   border:0;
-  border-radius:16px;
+  border-radius:15px;
   background:#e2e8f0;
   color:#0f172a;
-  font-size:1.25rem;
+  font-size:1.15rem;
   font-weight:950;
 }
 .yellow .quick-score-row button{
-  background:rgba(255,255,255,.72);
+  background:rgba(255,255,255,.76);
+}
+.quick-score-row button:active,
+.score-btn:active,
+.control:active{
+  transform:scale(.985);
 }
 .bottom{
   display:grid;
-  grid-template-columns:1fr;
+  grid-template-columns:repeat(4,minmax(0,1fr));
   gap:12px;
+}
+.bottom .control{
+  width:100%;
+  min-width:0;
+  min-height:66px;
+  border-radius:18px;
+  font-size:1.02rem;
 }
 .bottom .switch{
-  width:100%;
-  min-height:76px;
-  font-size:1.25rem;
+  background:linear-gradient(135deg,#f59e0b,#d97706);
+  color:#111827;
+  font-size:1.08rem;
 }
-.bottom-secondary{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:12px;
-}
-.bottom-secondary .control{
-  width:100%;
-}
-.finish{
+.bottom .finish{
   background:#fff;
   color:#b91c1c;
   border:3px solid #b91c1c;
 }
+.bottom .pause{background:#334155}
+.bottom .undo{background:#475569}
+
+@media(max-width:920px){
+  .score-btn{min-height:70px!important}
+  .quick-score-row button{min-height:48px}
+  .bottom .control{min-height:60px;font-size:.95rem}
+}
 @media(max-width:820px) and (orientation:portrait){
-  .quick-score-row{grid-template-columns:repeat(4,1fr)}
+  .bottom{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
 }
 @media(max-width:620px){
-  .bottom-secondary{grid-template-columns:1fr 1fr}
-  .bottom-secondary .finish{grid-column:1/-1}
+  .quick-score-row{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .bottom{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
 }
 
 </style>
 </head>
 <body>
-<section class="setup" id="setup"><div class="setup-card"><h1>3-Cushion iPad Scoreboard v1.2</h1><div class="sub">雙人比賽專用計分板，建議使用 iPad Mini 橫向操作。</div><div class="form-grid"><div><label>白球球員姓名</label><input id="whiteName" value="白球球員"></div><div><label>黃球球員姓名</label><input id="yellowName" value="黃球球員"></div><div><label>目標分數</label><input id="targetInput" type="number" min="1" value="30"></div><div><label>先攻球員</label><select id="starterInput"><option value="white">白球</option><option value="yellow">黃球</option></select></div><div><label>白球起始分數／讓分</label><input id="whiteStart" type="number" min="0" value="0"></div><div><label>黃球起始分數／讓分</label><input id="yellowStart" type="number" min="0" value="0"></div>
+<section class="setup" id="setup"><div class="setup-card"><h1>3-Cushion iPad Scoreboard v1.3</h1><div class="sub">雙人比賽專用計分板，建議使用 iPad Mini 橫向操作。</div><div class="form-grid"><div><label>白球球員姓名</label><input id="whiteName" value="白球球員"></div><div><label>黃球球員姓名</label><input id="yellowName" value="黃球球員"></div><div><label>目標分數</label><input id="targetInput" type="number" min="1" value="30"></div><div><label>先攻球員</label><select id="starterInput"><option value="white">白球</option><option value="yellow">黃球</option></select></div><div><label>白球起始分數／讓分</label><input id="whiteStart" type="number" min="0" value="0"></div><div><label>黃球起始分數／讓分</label><input id="yellowStart" type="number" min="0" value="0"></div>
       <div><label>End Game 剩餘分數提醒</label><select id="endGameThreshold"><option value="0">不顯示</option><option value="3">剩 3 分開始</option><option value="5" selected>剩 5 分開始</option><option value="999">全程顯示</option></select></div></div><button class="start-btn" onclick="startGame()">開始比賽</button></div></section>
 <section class="scoreboard hidden" id="scoreboard"><div class="topbar"><div class="top-left"><div class="top-stat"><div class="top-label">經過時間</div><div class="top-value" id="elapsed">00:00</div></div><div class="top-stat"><div class="top-label">目前 INN</div><div class="top-value" id="inning">1</div></div></div><div class="title">3-CUSHION SCOREBOARD</div><div class="top-right"><div class="top-stat"><div class="top-label">目標分數</div><div class="top-value" id="targetDisplay">30</div></div><div class="top-stat"><div class="top-label">目前球員</div><div class="top-value" id="activeName">—</div></div></div></div>
-<div class="players"><article class="player white" id="whitePanel"><div class="player-badge hidden" id="whiteActive">目前出杆</div><div class="player-header"><div class="ball white-ball"></div><div><div class="player-name" id="whiteNameDisplay"></div><div class="player-target">白球 · 目標 <span id="whiteTarget"></span></div></div></div><div class="score-area"><div class="score" id="whiteScore">0</div><div class="run-line">本杆得分 <span id="whiteRun">0</span></div></div><div class="player-controls"><button class="score-btn plus" onclick="changeScore('white',1)">+1</button><button class="score-btn minus" onclick="changeScore('white',-1)">−1</button></div></article>
-<article class="player yellow" id="yellowPanel"><div class="player-badge hidden" id="yellowActive">目前出杆</div><div class="player-header"><div class="ball yellow-ball"></div><div><div class="player-name" id="yellowNameDisplay"></div><div class="player-target">黃球 · 目標 <span id="yellowTarget"></span></div></div></div><div class="score-area"><div class="score" id="yellowScore">0</div><div class="run-line">本杆得分 <span id="yellowRun">0</span></div></div><div class="player-controls"><button class="score-btn plus" onclick="changeScore('yellow',1)">+1</button><button class="score-btn minus" onclick="changeScore('yellow',-1)">−1</button></div></article></div>
-<div class="bottom"><button class="control pause" id="pauseBtn" onclick="togglePause()">暫停</button><button class="control switch" onclick="switchPlayer()">換人／本 INN 結束</button><button class="control finish" onclick="finishGame()">結束比賽</button></div></section>
+<div class="players"><article class="player white" id="whitePanel">
+      <div class="player-badge hidden" id="whiteActive">目前出杆</div>
+      <div class="player-header">
+        <div class="ball white-ball"></div>
+        <div>
+          <div class="player-name" id="whiteNameDisplay"></div>
+          <div class="player-target">白球 · 目標 <span id="whiteTarget"></span></div>
+        </div>
+      </div>
+
+      <div class="score-area">
+        <div class="score" id="whiteScore">0</div>
+        <div class="remaining hidden" id="whiteRemaining">剩 0</div>
+        <div class="run-line">本杆目前連得 <span id="whiteRun">0</span></div>
+        <div class="high-run-line">High Run <span id="whiteHighRun">0</span></div>
+      </div>
+
+      <div class="score-controls-wrap">
+        <div class="player-controls">
+          <button class="score-btn plus" onclick="changeScore('white',1)">+1</button>
+          <button class="score-btn minus" onclick="changeScore('white',-1)">−1</button>
+        </div>
+        <div class="quick-score-row">
+          <button onclick="changeScore('white',2)">+2</button>
+          <button onclick="changeScore('white',3)">+3</button>
+          <button onclick="changeScore('white',4)">+4</button>
+          <button onclick="changeScore('white',5)">+5</button>
+        </div>
+      </div>
+    </article>
+<article class="player yellow" id="yellowPanel">
+      <div class="player-badge hidden" id="yellowActive">目前出杆</div>
+      <div class="player-header">
+        <div class="ball yellow-ball"></div>
+        <div>
+          <div class="player-name" id="yellowNameDisplay"></div>
+          <div class="player-target">黃球 · 目標 <span id="yellowTarget"></span></div>
+        </div>
+      </div>
+
+      <div class="score-area">
+        <div class="score" id="yellowScore">0</div>
+        <div class="remaining hidden" id="yellowRemaining">剩 0</div>
+        <div class="run-line">本杆目前連得 <span id="yellowRun">0</span></div>
+        <div class="high-run-line">High Run <span id="yellowHighRun">0</span></div>
+      </div>
+
+      <div class="score-controls-wrap">
+        <div class="player-controls">
+          <button class="score-btn plus" onclick="changeScore('yellow',1)">+1</button>
+          <button class="score-btn minus" onclick="changeScore('yellow',-1)">−1</button>
+        </div>
+        <div class="quick-score-row">
+          <button onclick="changeScore('yellow',2)">+2</button>
+          <button onclick="changeScore('yellow',3)">+3</button>
+          <button onclick="changeScore('yellow',4)">+4</button>
+          <button onclick="changeScore('yellow',5)">+5</button>
+        </div>
+      </div>
+    </article></div>
+<div class="bottom">
+    <button class="control pause" id="pauseBtn" onclick="togglePause()">⏸ 暫停</button>
+    <button class="control switch" id="switchBtn" onclick="switchPlayer()">換人 →</button>
+    <button class="control undo" id="undoBtn" onclick="undoLast()">↶ 上一步</button>
+    <button class="control finish" onclick="finishGame()">結束比賽</button>
+  </div>
+</section>
 <section class="result-overlay hidden" id="resultOverlay"><div class="result-card"><div class="result-title">比賽結果</div><div class="result-score" id="resultScore"></div><div class="stats-grid" id="statsGrid"></div><div class="result-actions"><button class="new-game" onclick="newGame()">開始新比賽</button><button class="close-result" onclick="resultOverlay.classList.add('hidden')">返回計分板</button></div></div></section>
 <script>
 let state=null,timer=null;
